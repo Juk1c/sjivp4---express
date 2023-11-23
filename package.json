@@ -1,18 +1,23 @@
 {
   "name": "express2",
-  "version": "1.0.0",
-  "description": "my first express.js application",
-  "main": "index.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www",
+    "dev": "npx nodemon ./bin/www",
+    "tw": "npx tailwindcss -i ./public/stylesheets/input.css -o ./public/stylesheets/style.css --watch"
   },
-  "keywords": [
-    "text",
-    "express.js"
-  ],
-  "author": "Karlo Ban",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "daisyui": "^4.4.4",
+    "nodemon": "^3.0.1",
+    "tailwindcss": "^3.3.5"
   }
 }
