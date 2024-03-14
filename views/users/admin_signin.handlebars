@@ -1,10 +1,10 @@
 <div class="hero min-h-screen bg-base-200">
     <div class="hero-content">
         <div class="max-w-md">
-            <h1 class="text-5xl font-bold">Prijava korisnika</h1>
+            <h1 class="text-5xl font-bold">Prijava admina</h1>
 
             {{#if result.display_form}}
-            <form method="post" action="/users/signin">
+            <form method="post" action="/competitions/admin_signin">
                 <div class="py-6">
                     <div>
                         <label class="form-control w-full max-w-xs">
@@ -31,7 +31,7 @@
             {{/if}}
 
             {{#if result.validation_error}}
-            {{> validation_error }}
+            {{> validation_error}}
             {{/if}}
 
             {{#if result.invalid_credentials}}
@@ -57,7 +57,7 @@
                             Uspješno ste se prijavili, možete nastaviti s radom!
                         </p>
                         <div class="card-actions justify-end">
-                            <a class="btn" href="/">Nastavi na naslovnicu</a>
+                            <a class="btn" href="/admin_signin">Nastavi na naslovnicu</a>
                         </div>
                     </div>
                 </div>
