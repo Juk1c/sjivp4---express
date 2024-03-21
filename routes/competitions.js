@@ -31,7 +31,7 @@ router.get("/delete/:id", adminRequired, function (req, res, next) {
         throw new Error("Neispravan poziv");
     }
 
-    // 3. Zadatak
+    // ZADATAK 3
 
     const checkStmt1 = db.prepare("SELECT count(*) FROM login WHERE id_competition = ?");
     const checkResult1 = checkStmt1.get(req.params.id);
@@ -132,7 +132,7 @@ router.post("/add", adminRequired, function (req, res, next) {
     }
 });
 
-// 1. Zadatak
+// ZADATAK 1
 
 // GET /competitions/login/:id
 router.get("/login/:id", function (req, res, next) {
@@ -166,7 +166,7 @@ router.get("/login/:id", function (req, res, next) {
     }
 });
 
-// 2. zadatak
+// ZADATAK 2
 
 // GET /competitions/score_input/:id
 
@@ -206,6 +206,34 @@ router.post("/score_change", authRequired, function (req, res, next) {
     } else {
         res.render("competitions/form", { result: { database_error: true } });
     }
+});
+
+// ZADATAK 4
+
+// GET /competitions/leaderbaord/:id
+
+router.get("/leaderboard/:id", function (req, res, next) {
+
+    const stmt = db.prepare(`
+        SELECT u.name AS natjecatelj, l.score, l.id_user
+        FROM competitions c, users u, login l
+        WHERE l.id_user = u.id AND l.id_competition = c.id AND l.id_competition = ?
+        ORDER BY l.score DESC;
+    `);
+
+    const result = stmt.all(req.params.id);
+
+    console.log(result);
+
+    const stmt1 = db.prepare(`
+        SELECT name AS natjecanje, apply_till AS datum
+        FROM competitions
+        WHERE id = ?
+    `);
+
+    const data = stmt1.all(req.params.id);
+
+    res.render("competitions/leaderboard", { layout:'noheader' ,result: { items: result, data}, data: { items: data}});
 });
 
 module.exports = router;
