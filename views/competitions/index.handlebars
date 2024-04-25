@@ -45,13 +45,19 @@
                                     prijava</button>
                                     <a href="/competitions/leaderboard/{{this.id}}" button type="button"
                                         class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-bold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Ljestvica</button>
-
+                                    <a href="/competitions/viewfeed/{{this.id}}" button type="button" class="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800  font-bold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Feedback</button>
                     </td>
                     {{/if}}
                     <td class="flex-none">
                         <a href="/competitions/login/{{this.id}}" button type="button"
                             class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-bold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Prijavi</button>
                     </td>
+
+                    <td class="flex-none">
+                        <a href="/competitions/feedback/{{this.id}}" button type="button"
+                            class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-bold rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Feedback</button>
+                    </td>
+
                 </tr>
                 {{/each}}
             </tbody>

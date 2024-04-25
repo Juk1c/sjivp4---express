@@ -1,0 +1,23 @@
+<div class="p-2">
+    <div class="overflow-x-auto">
+        <table class="table">
+            <!-- head -->
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <!-- body -->
+            <tbody>
+
+                {{#each result.items}}
+                <tr>
+                    <td>{{this.ID}}</td>
+                    <td>{{this.text}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

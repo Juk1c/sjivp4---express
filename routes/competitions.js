@@ -236,4 +236,34 @@ router.get("/leaderboard/:id", function (req, res, next) {
     res.render("competitions/leaderboard", { layout:'noheader' ,result: { items: result, data}, data: { items: data}});
 });
 
+// ZADATAK feedback
+
+router.get("/feedback/:id", function (req, res, next) {
+
+    res.render("competitions/feedback");
+});
+
+router.post("/feedback", function (req, res, next) {
+
+    const stmt = db.prepare("INSERT INTO feedback (text) VALUES (?);");
+    const updateResult = stmt.run(req.body.feedback);
+
+    if (updateResult.changes && updateResult.changes === 1) {
+        res.render("competitions/feedback", { result: { feedsuccess: true } });
+    } else {
+        res.render("competitions/feedback", { result: { database_error: true } });
+    }
+});
+
+router.get("/viewfeed/:id", adminRequired, function (req, res, next) {
+
+    const stmt = db.prepare(`
+        SELECT ID, text FROM feedback;
+    `);
+
+    const result = stmt.all();
+
+    res.render("competitions/viewfeed", { result: { items: result } });
+});
+
 module.exports = router;

@@ -1,0 +1,47 @@
+<div class="p-2">
+    <div class="overflow-x-auto">
+        <table class="table">
+            <!-- head -->
+            <thead>
+                <tr>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <!-- body -->
+            <tbody>
+                <tr>
+                    <td>
+                        <form method="post" action="/competitions/feedback" class="flex flex-col gap-2">
+                            <div class="flex flex-col">
+                                <label>Unesite povratne informacije o natjecanju.</label>
+                                <input id="feedback" type="text" name="feedback" class="bg-neutral"/>
+                                <input type="hidden" name="id" value="{{this.login_id}}"/>
+                                {{> form_buttons }}
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {{#if result.feedsuccess}}
+    <div class="mt-4">
+        <div class="card w-96 bg-primary text-primary-content">
+            <div class="card-body">
+                <h2 class="card-title">Uspjeh!</h2>
+                <p>
+                    Uspješno ste poslali feedback!
+                </p>
+                <div class="card-actions justify-end">
+                    <a class="btn" href="/competitions">Nastavi na pregled natjecanja</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+
+
+    {{#if result.database_error}}
+    {{> database_error }}
+    {{/if}}
+</div>
